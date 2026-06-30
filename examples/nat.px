@@ -1,0 +1,16 @@
+-- Natural numbers using Mu
+let
+  Nat : Type = Mu self. < 'Zero | 'Succ self >
+  
+  zero : Nat = fold 'Zero
+  
+  succ : Nat -> Nat
+  succ n = fold 'Succ n
+  
+  isZero : Nat -> Bool
+  isZero n = case unfold n of
+    'Zero => True
+    'Succ _ => False
+  
+  three : Nat = succ (succ (succ zero))
+in isZero three

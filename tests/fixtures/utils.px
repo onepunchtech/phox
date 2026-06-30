@@ -1,0 +1,4 @@
+let
+  double : Integer -> Integer = \x => x
+  greet : String -> String = \name => name
+in { double = double, greet = greet }

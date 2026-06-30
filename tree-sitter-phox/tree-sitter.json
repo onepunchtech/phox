@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the Phox language",
+    "authors": [],
+    "links": {
+      "repository": "https://github.com/example/tree-sitter-phox"
+    }
+  },
+  "grammars": [
+    {
+      "name": "phox",
+      "scope": "source.phox",
+      "path": ".",
+      "file-types": ["px"],
+      "highlights": "queries/highlights.scm"
+    }
+  ]
+}

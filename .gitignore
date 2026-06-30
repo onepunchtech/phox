@@ -1,0 +1,5 @@
+/target
+.direnv
+.claude/
+editor/nvim/parser/
+tree-sitter-phox/phox.so

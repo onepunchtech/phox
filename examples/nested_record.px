@@ -1,0 +1,4 @@
+let
+  addr = {street = "123 Main", city = "NYC"}
+  person = {name = "Alice", address = addr}
+in person.address.city

@@ -1,0 +1,4 @@
+let
+  id : (a : Type) -> a -> a
+  id _ x = x
+in id Integer 5

@@ -1,0 +1,2 @@
+let prelude = import "std/prelude"
+in prelude.id 42

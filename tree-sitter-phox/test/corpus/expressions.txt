@@ -1,0 +1,292 @@
+================
+Variable
+================
+
+foo
+
+---
+
+(source_file
+  (lower_identifier))
+
+================
+Type variable
+================
+
+Foo
+
+---
+
+(source_file
+  (upper_identifier))
+
+================
+Type builtin
+================
+
+Integer
+
+---
+
+(source_file
+  (type_builtin))
+
+================
+Application
+================
+
+f x y
+
+---
+
+(source_file
+  (application
+    function: (lower_identifier)
+    argument: (lower_identifier)
+    argument: (lower_identifier)))
+
+================
+Record access
+================
+
+foo.bar
+
+---
+
+(source_file
+  (record_access
+    (lower_identifier)
+    field: (lower_identifier)))
+
+================
+Arrow type
+================
+
+Integer -> String
+
+---
+
+(source_file
+  (arrow_type
+    (type_builtin)
+    (type_builtin)))
+
+================
+Lambda
+================
+
+\x => x
+
+---
+
+(source_file
+  (lambda
+    param: (pattern_variable (lower_identifier))
+    body: (lower_identifier)))
+
+================
+Multi-param lambda
+================
+
+\x y z => x
+
+---
+
+(source_file
+  (lambda
+    param: (pattern_variable (lower_identifier))
+    param: (pattern_variable (lower_identifier))
+    param: (pattern_variable (lower_identifier))
+    body: (lower_identifier)))
+
+================
+If expression
+================
+
+if True then 1 else 0
+
+---
+
+(source_file
+  (if_expression
+    condition: (boolean)
+    then: (integer)
+    else: (integer)))
+
+================
+Record literal
+================
+
+{x = 1, y = 2}
+
+---
+
+(source_file
+  (record_literal
+    (record_field name: (lower_identifier) value: (integer))
+    (record_field name: (lower_identifier) value: (integer))))
+
+================
+Variant constructor nullary
+================
+
+'Nothing
+
+---
+
+(source_file
+  (variant_constructor tag: (upper_identifier)))
+
+================
+Variant constructor with payload
+================
+
+'Just 42
+
+---
+
+(source_file
+  (variant_constructor
+    tag: (upper_identifier)
+    payload: (integer)))
+
+================
+Variant type
+================
+
+< 'Nothing | 'Just Integer >
+
+---
+
+(source_file
+  (variant_type
+    (variant_tag tag: (upper_identifier))
+    (variant_tag tag: (upper_identifier) payload: (type_builtin))))
+
+================
+Hole
+================
+
+?foo
+
+---
+
+(source_file
+  (hole (lower_identifier)))
+
+================
+Fold expression
+================
+
+fold 'Nil
+
+---
+
+(source_file
+  (fold_expression
+    (variant_constructor tag: (upper_identifier))))
+
+================
+Unfold expression
+================
+
+unfold xs
+
+---
+
+(source_file
+  (unfold_expression
+    (lower_identifier)))
+
+================
+Mu type
+================
+
+Mu self. < 'Zero | 'Succ self >
+
+---
+
+(source_file
+  (mu_type
+    var: (lower_identifier)
+    body: (variant_type
+      (variant_tag tag: (upper_identifier))
+      (variant_tag tag: (upper_identifier) payload: (lower_identifier)))))
+
+================
+Pi type
+================
+
+(x : Type) -> x
+
+---
+
+(source_file
+  (pi_type
+    param: (lower_identifier)
+    param_type: (type_builtin)
+    return_type: (lower_identifier)))
+
+================
+Type annotation
+================
+
+(42 : Integer)
+
+---
+
+(source_file
+  (type_annotation
+    (integer)
+    (type_builtin)))
+
+================
+List literal
+================
+
+[1, 2, 3]
+
+---
+
+(source_file
+  (list_literal
+    (integer)
+    (integer)
+    (integer)))
+
+================
+Empty list
+================
+
+[]
+
+---
+
+(source_file
+  (list_literal))
+
+================
+Comment
+================
+
+-- this is a comment
+42
+
+---
+
+(source_file
+  (comment)
+  (integer))
+
+================
+Record type with Rec
+================
+
+Rec {name : String, age : Integer}
+
+---
+
+(source_file
+  (rec_type
+    (record_type_field name: (lower_identifier) type: (type_builtin))
+    (record_type_field name: (lower_identifier) type: (type_builtin))))

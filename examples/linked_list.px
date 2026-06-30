@@ -1,0 +1,28 @@
+-- Linked list using Mu (isorecursive types)
+
+let
+  List : Type -> Type
+  List a = Mu self. < 'Nil | 'Cons Rec {head : a, tail : self} >
+
+  nil : (a : Type) -> List a
+  nil _ = fold 'Nil
+
+  cons : (a : Type) -> a -> List a -> List a
+  cons _ x xs = fold ('Cons {head = x, tail = xs})
+
+  head : (a : Type) -> a -> List a -> a
+  head _ default xs = case unfold xs of
+    'Cons r => r.head
+    'Nil => default
+
+  tail : (a : Type) -> List a -> List a
+  tail a xs = case unfold xs of
+    'Cons r => r.tail
+    'Nil => nil a
+
+  myList : List Integer
+  myList = cons Integer 1 (cons Integer 2 (cons Integer 3 (nil Integer)))
+
+  second : Integer
+  second = head Integer 0 (tail Integer myList)
+in second

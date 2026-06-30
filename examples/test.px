@@ -1,0 +1,15 @@
+let
+  Either : Type -> Type -> Type
+  Either l r = < 'Left l | 'Right r >
+
+  Maybe : Type -> Type
+  Maybe t = < 'Nothing | 'Just t >
+
+  fromMaybe : (a : Type) -> a -> Maybe a -> a
+  fromMaybe _ default val = case val of
+    'Just x => x
+    'Nothing => default
+
+  result : Either String Integer
+  result = 'Right 42
+in fromMaybe Integer 0 ('Just 5)

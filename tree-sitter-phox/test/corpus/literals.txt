@@ -1,0 +1,87 @@
+================
+Integer literal
+================
+
+42
+
+---
+
+(source_file
+  (integer))
+
+================
+Negative integer
+================
+
+-7
+
+---
+
+(source_file
+  (integer))
+
+================
+Double literal
+================
+
+3.14
+
+---
+
+(source_file
+  (double))
+
+================
+String literal
+================
+
+"hello world"
+
+---
+
+(source_file
+  (string))
+
+================
+Char literal
+================
+
+'x'
+
+---
+
+(source_file
+  (char))
+
+================
+Boolean true
+================
+
+True
+
+---
+
+(source_file
+  (boolean))
+
+================
+Boolean false
+================
+
+False
+
+---
+
+(source_file
+  (boolean))
+
+================
+Unit literal
+================
+
+()
+
+---
+
+(source_file
+  (unit))

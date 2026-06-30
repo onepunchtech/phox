@@ -1,0 +1,4 @@
+let
+  const : (a : Type) -> (b : Type) -> a -> b -> a
+  const _ _ x _ = x
+in const String Integer "hello" 42

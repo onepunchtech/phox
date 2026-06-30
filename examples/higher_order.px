@@ -1,0 +1,7 @@
+let
+  apply : (a : Type) -> (b : Type) -> (a -> b) -> a -> b
+  apply _ _ f x = f x
+
+  double : Integer -> Integer
+  double x = x
+in apply Integer Integer double 21

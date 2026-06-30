@@ -1,0 +1,7 @@
+let
+  x : Integer
+  x = 42
+
+  y : Integer = 52
+
+in x

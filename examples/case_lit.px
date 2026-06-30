@@ -1,0 +1,10 @@
+let
+  greet : String -> String
+  greet name = case name of
+    "Alice" => "Hello Alice!"
+    "Bob" => "Hey Bob!"
+    _ => "Hi stranger!"
+  
+  foo : Integer
+  foo = 42
+in greet "Alice"

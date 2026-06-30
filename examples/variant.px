@@ -1,0 +1,9 @@
+let
+  Maybe : Type -> Type
+  Maybe t = < 'Nothing | 'Just t >
+
+  fromMaybe : (a : Type) -> a -> Maybe a -> a
+  fromMaybe _ default val = case val of
+    'Just x => x
+    'Nothing => default
+in fromMaybe Integer 0 ('Just 42)
